@@ -86,7 +86,8 @@ public:
    // Vertex to Face Adj
    if(HasPerVertexVFAdjacency(ml) && HasPerVertexVFAdjacency(mr) && vr.cVFp() != 0 ){
      size_t i = Index(mr,vr.cVFp());
-     vl.VFp() = (i>ml.face.size())? 0 :&ml.face[remap.face[i]];
+	 auto fn = ml.face.size();
+     vl.VFp() = (i> fn || remap.face[i] > fn)? 0 :&ml.face[remap.face[i]];
      vl.VFi() = vr.VFi();
    }
 
@@ -118,7 +119,8 @@ public:
      // Edge to Face  Adj
      if(HasEFAdjacency(ml) && HasEFAdjacency(mr)){
        size_t idx = Index(mr,er.cEFp());
-       el.EFp() = (idx>ml.face.size())? 0 :&ml.face[remap.face[idx]];
+	   auto fn = ml.face.size();
+       el.EFp() = (idx> fn || remap.face[idx] > fn)? 0 :&ml.face[remap.face[idx]];
        el.EFi() = er.cEFi();
      }
 
