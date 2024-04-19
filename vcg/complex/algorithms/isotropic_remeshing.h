@@ -503,8 +503,8 @@ private:
 
         ForEachFace(m, [&] (FaceType & f) {
             f.Q() = 1. - vcg::QualityRadii(f.cP(0), f.cP(1), f.cP(2));
-            maxV = std::max(maxV, f.Q());
-            minV = std::min(minV, f.Q());
+            maxV = std::max(maxV, (float)f.Q());
+            minV = std::min(minV, (float)f.Q());
         });
 
         vcg::tri::UpdateQuality<MeshType>::VertexFromFace(m);
