@@ -153,7 +153,7 @@ public:
     void Update(SimplexPointerType &vp)
     {
       //if(vp>=newBase && vp<newEnd) return;
-      if(vp<oldBase || vp>oldEnd) return;
+      if(vp<oldBase || vp>=oldEnd) return;
       assert(vp>=oldBase);
       assert(vp<oldEnd);
       vp=newBase+(vp-oldBase);
